@@ -1,1 +1,27 @@
-.venv
+# Entorno virtual
+.venv/
+
+# Base de datos SQLite
+db.sqlite3
+
+# Archivos compilados
+*.pyc
+__pycache__/
+
+# Archivos de logs
+*.log
+
+# Archivos estáticos y media (opcional)
+staticfiles/
+media/
+
+# Variables de entorno
+.env
+
+# Configuración de IDEs
+.idea/
+.vscode/
+
+# Archivos temporales de sistema operativo
+.DS_Store
+Thumbs.db
