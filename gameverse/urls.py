@@ -19,9 +19,11 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from debug_toolbar.toolbar import debug_toolbar_urls
+from compras.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", inicio_compras),
     path("accounts/", include("registration.backends.default.urls")),
     path("usuarios/", include("usuarios.urls")),
     path("juegos/", include("juegos.urls")),
@@ -32,5 +34,5 @@ urlpatterns = [
 if settings.DEBUG:
     import debug_toolbar
 
-    # redefinimos la lista pero cambiando la posicion priemor als rutas ocn debig para interceptar errores
+    # redefinimos la lista pero cambiando la posicion primero las rutas con debug para interceptar errores
     urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
