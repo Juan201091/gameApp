@@ -123,8 +123,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# Definie la url base para los archivos estaticos
 STATIC_URL = "/static/"
+# Especifica unica donde se recolectaran los archivos estaticos de staticfiles_dirs y las carpetas  static de cada aplicacion
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# Define la carpeta donde se guardaran los archivos estaticos durante el desarrollo mientras se ejecuta runserver
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static_dev"),)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -144,3 +147,23 @@ ACCOUNT_ACTIVATION_DAYS = (
 REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
 # cuantos sitios estan aplicando este registros de configuracion
 SITE_ID = 1
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
+
+if DEBUG:
+    MIDDLEWARE += [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ]
+    INSTALLED_APPS += [
+        "debug_toolbar",
+    ]
+    INTERNAL_IPS = [
+        # ...
+        "127.0.0.1",
+        # ...
+    ]
