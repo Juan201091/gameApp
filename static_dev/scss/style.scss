@@ -1,0 +1,17 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "contenedor.scss";
+
+
+
+.btn-danger:hover{
+    background-color: #b6f039;
+}
+
+.bg-form{
+    background-color: #b9c69d;
+}
+
+.fs-form{
+    color: #070707;
+    font-weight: 700 !important;
+}

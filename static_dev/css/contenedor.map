@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "contenedor.css",
+	"sources": [
+		"../scss/contenedor.scss",
+		"../scss/variables.scss"
+	],
+	"sourcesContent": [
+		"@import \"variables\";\r\n\r\nbody{\r\n    background-color: $BG_color_principal;\r\n}\r\n\r\n\r\n.container .titulo{\r\n    color: $BG_color_principal;\r\n}\r\n.container h1{\r\n    color: blue;\r\n}\r\n\r\n.container p{\r\n    color: rgb(139, 34, 94);\r\n}\r\n\r\np {\r\n    color: red;\r\n}",
+		"// colores\r\n\r\n$BG_color_principal : #c4c4c4;"
+	],
+	"names": [],
+	"mappings": ";AAEA,AAAA,IAAI,CAAA;EACA,gBAAgB,ECDE,OAAO;CDE5B;;;AAGD,AAAA,UAAU,CAAC,OAAO,CAAA;EACd,KAAK,ECNa,OAAO;CDO5B;;;AACD,AAAA,UAAU,CAAC,EAAE,CAAA;EACT,KAAK,EAAE,IAAI;CACd;;;AAED,AAAA,UAAU,CAAC,CAAC,CAAA;EACR,KAAK,EAAE,OAAgB;CAC1B;;;AAED,AAAA,CAAC,CAAC;EACE,KAAK,EAAE,GAAG;CACb"
+}

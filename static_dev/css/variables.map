@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "variables.css",
+	"sources": [
+		"../scss/variables.scss"
+	],
+	"sourcesContent": [
+		"// colores\r\n\r\n$BG_color_principal : #c4c4c4;"
+	],
+	"names": [],
+	"mappings": ""
+}

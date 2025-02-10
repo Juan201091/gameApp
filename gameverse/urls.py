@@ -18,21 +18,28 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from debug_toolbar.toolbar import debug_toolbar_urls
 from compras.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("__reload__/", include("django_browser_reload.urls")),
+    path("captcha/", include("captcha.urls")),
     path("", inicio_compras),
     path("accounts/", include("registration.backends.default.urls")),
     path("usuarios/", include("usuarios.urls")),
     path("juegos/", include("juegos.urls")),
     path("medios_pagos/", include("medios_pagos.urls")),
     path("compras/", include("compras.urls")),
+    path("contacto/", include("contacto.urls")),
 ]
 
+# Solo si estamos en modo DEBUG
 if settings.DEBUG:
     import debug_toolbar
+    from django.conf.urls.static import static
 
-    # redefinimos la lista pero cambiando la posicion primero las rutas con debug para interceptar errores
+    # Agregar rutas de debug_toolbar
     urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
+
+    # Servir archivos multimedia (MEDIA_ROOT) durante el desarrollo
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

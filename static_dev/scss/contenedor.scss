@@ -1,0 +1,21 @@
+@import "variables";
+
+body{
+    background-color: $BG_color_principal;
+}
+
+
+.container .titulo{
+    color: $BG_color_principal;
+}
+.container h1{
+    color: blue;
+}
+
+.container p{
+    color: rgb(139, 34, 94);
+}
+
+p {
+    color: red;
+}

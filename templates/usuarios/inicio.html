@@ -1,3 +1,90 @@
-{% extends 'base.html'%} {% block content %}
+{% extends 'base.html'%} {%load static%} {% block content %}
 <h1>Bienvenidos a la pagina de usuarios</h1>
+<form action="" class="container">
+  <div class="row">
+    <div class="col-12">
+      <textarea
+        class="form-control mb-3"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+      <input
+        class="form-control form-control-sm mb-3"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Nombre"
+      />
+      <input
+        class="form-control form-control-sm mb-3"
+        type="text"
+        name="apellido"
+        id="apellido"
+        placeholder="Apellido"
+      />
+      <input
+        class="form-control mb-3"
+        type="text"
+        name="edad"
+        id="edad"
+        placeholder="Edad"
+      />
+      <div id="passwordHelpBlock" class="form-text mb-3">
+        Your password must be 8-20 characters long, contain letters and numbers,
+        and must not contain spaces, special characters, or emoji.
+      </div>
+      <input
+        class="form-control mb-3"
+        type="text"
+        placeholder="Disabled input"
+        aria-label="Disabled input example"
+        disabled
+      />
+      <input
+        class="form-control mb-3"
+        type="text"
+        value="Disabled readonly input"
+        aria-label="Disabled input example"
+        disabled
+        readonly
+      />
+      <input type="search" class="form-control mb-3" placeholder="Search..." />
+    </div>
+  </div>
+</form>
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="{% static 'media/ejemplo.png' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="..." />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 {% endblock %}

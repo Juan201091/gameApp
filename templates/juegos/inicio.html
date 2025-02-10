@@ -1,144 +1,119 @@
+{% load static %}{% load custom_tag %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catálogo de Juegos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <style>
-        .navbar {
-            background-color: #1b2838;
-        }
-        .navbar-brand, .nav-link {
-            color: #c7d5e0 !important;
-        }
-        .game-card img {
-            height: 200px;
-            object-fit: cover;
-        }
-        .game-card {
-            background-color: #2a475e;
-            color: white;
-            border: none;
-        }
-        .game-card .btn-primary {
-            background-color: #66c0f4;
-            border-color: #66c0f4;
-        }
-        footer {
-            background-color: #1b2838;
-            color: #c7d5e0;
-            padding: 20px;
-        }
+      .navbar {
+        background-color: #1b2838;
+      }
+      .navbar-brand,
+      .nav-link {
+        color: #c7d5e0 !important;
+      }
+      .game-card img {
+        height: 200px;
+        object-fit: cover;
+      }
+      .game-card {
+        background-color: #2a475e;
+        color: white;
+        border: none;
+      }
+      .game-card .btn-primary {
+        background-color: #66c0f4;
+        border-color: #66c0f4;
+      }
+      footer {
+        background-color: #1b2838;
+        color: #c7d5e0;
+        padding: 20px;
+      }
+      .bg-success {
+        background-color: red;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Mi Steam</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Juegos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="#">Mi Steam</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Encabezado -->
     <div class="container my-5">
-        <h1 class="text-center text-light bg-dark p-3 rounded">Catálogo de Juegos</h1>
+      <h1 class="text-center text-light bg-dark p-3 rounded">
+        Catálogo de Juegos
+      </h1>
     </div>
-
+    <!-- container deja margen container-fluid no -->
+    <div class="container"></div>
     <!-- Catálogo de juegos -->
     <div class="container">
-        <div class="row g-4">
-            <!-- Tarjeta de juego -->
-            <div class="col-md-4">
-                <div class="card game-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Juego 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego 1</h5>
-                        <p class="card-text">Descripción breve del juego.</p>
-                        <p class="card-text"><strong>Precio:</strong> $49.99</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
-                    </div>
-                </div>
+      <div class="row g-4">
+        <!-- Tarjeta de juego -->
+        {% for juego in juegos %}
+        <div class="col-md-4">
+          <div class="card game-card">
+            <img
+              src="{% static juego.imagen %}"
+              class="img-fluid w-100"
+              alt="Juego 1"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{juego.nombre|upper}}</h5>
+              <p class="card-text text-white">{{juego.descripcion}}</p>
+              <p class="card-text text-white">
+                <strong>Precio:</strong> {{juego.precio|format_miles}}
+              </p>
+              <div class="text-center">
+                <a href="#" class="btn btn-primary">Ver detalles</a>
+              </div>
             </div>
-            <!-- Repite las tarjetas para más juegos -->
-            <div class="col-md-4">
-                <div class="card game-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Juego 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego 2</h5>
-                        <p class="card-text">Descripción breve del juego.</p>
-                        <p class="card-text"><strong>Precio:</strong> $29.99</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card game-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Juego 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego 3</h5>
-                        <p class="card-text">Descripción breve del juego.</p>
-                        <p class="card-text"><strong>Precio:</strong> $19.99</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Más tarjetas -->
-            <div class="col-md-4">
-                <div class="card game-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Juego 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego 4</h5>
-                        <p class="card-text">Descripción breve del juego.</p>
-                        <p class="card-text"><strong>Precio:</strong> $39.99</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card game-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Juego 5">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego 5</h5>
-                        <p class="card-text">Descripción breve del juego.</p>
-                        <p class="card-text"><strong>Precio:</strong> $59.99</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card game-card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Juego 6">
-                    <div class="card-body">
-                        <h5 class="card-title">Juego 6</h5>
-                        <p class="card-text">Descripción breve del juego.</p>
-                        <p class="card-text"><strong>Precio:</strong> $24.99</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-
     <!-- Pie de página -->
     <footer class="text-center mt-5">
-        <p>&copy; 2024 Mi Steam. Todos los derechos reservados.</p>
-        <a href="#" class="text-decoration-none text-light">Política de privacidad</a> |
-        <a href="#" class="text-decoration-none text-light">Términos de uso</a>
+      <p>&copy; 2024 Mi Steam. Todos los derechos reservados.</p>
+      <a href="#" class="text-decoration-none text-light"
+        >Política de privacidad</a
+      >
+      |
+      <a href="#" class="text-decoration-none text-light">Términos de uso</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script>
+      let btn = document.querySelector(".btn-primary");
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        let valor = this.textContent;
+        localStorage.setItem("valor", valor);
+      });
+    </script>
+  </body>
 </html>
-

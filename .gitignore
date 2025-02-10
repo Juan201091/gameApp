@@ -30,3 +30,4 @@ v
 # tests
 tests/
 pytest.ini
+node_modules/

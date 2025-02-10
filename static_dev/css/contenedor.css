@@ -1,0 +1,26 @@
+/* line 3, ../../Documents/Gameverse/static_dev/scss/contenedor.scss */
+body {
+  background-color: #c4c4c4;
+}
+
+/* line 8, ../../Documents/Gameverse/static_dev/scss/contenedor.scss */
+.container .titulo {
+  color: #c4c4c4;
+}
+
+/* line 11, ../../Documents/Gameverse/static_dev/scss/contenedor.scss */
+.container h1 {
+  color: blue;
+}
+
+/* line 15, ../../Documents/Gameverse/static_dev/scss/contenedor.scss */
+.container p {
+  color: #8b225e;
+}
+
+/* line 19, ../../Documents/Gameverse/static_dev/scss/contenedor.scss */
+p {
+  color: red;
+}
+
+/*# sourceMappingURL=contenedor.css.map */

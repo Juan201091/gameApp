@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_browser_reload",
+    "captcha",
     "usuarios.apps.UsuariosConfig",
     "juegos.apps.JuegosConfig",
     "medios_pagos.apps.MediosPagosConfig",
     "compras.apps.ComprasConfig",
+    "contacto.apps.ContactoConfig",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "gameverse.urls"
@@ -124,12 +128,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 # Definie la url base para los archivos estaticos
+#  una URL pública (una dirección para acceder desde el navegador)
 STATIC_URL = "/static/"
 # Especifica unica donde se recolectaran los archivos estaticos de staticfiles_dirs y las carpetas  static de cada aplicacion
+# cuando se ejecute el comando collectstatic movera lso archivos de static_dev a static_root
+# donde se almacenaran los archivos estaticos para produccion
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # Define la carpeta donde se guardaran los archivos estaticos durante el desarrollo mientras se ejecuta runserver
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static_dev"),)
+
+# Es la URL base para acceder a los archivos multimedia en tu aplicación.
+# Por ejemplo, si un usuario sube una imagen llamada perfil.jpg, esta será accesible en:
+# arduino
+# Copiar código
+# http://127.0.0.1:8000/media/perfil.jpg
+
+#  una URL pública (una dirección para acceder desde el navegador)
+
 MEDIA_URL = "/media/"
+# donde se almacenandan los archivos multimedia cargados por los usuarios
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type

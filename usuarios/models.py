@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Datos_Usuario(models.Model):
     # no es necesario agregar un campo id para identficar los registros, ya que Django lo crea automáticamente con ONE TO ONE
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     fecha_nacimiento = models.DateField(blank=True, null=True)
@@ -25,8 +25,15 @@ class Datos_Usuario(models.Model):
         null=True,
     )
 
+    def save(self, *args, **kwargs):
+        force_update = False
+        if self.id:
+            force_update = True
+            print("existo")
+        super().save(force_update=force_update)
+
     def __str__(self):
-        return self.user.username
+        return self.usuario.username
 
 
 class Biblioteca(models.Model):
